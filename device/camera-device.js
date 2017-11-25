@@ -1,5 +1,9 @@
 'use strict';
 
+const DEFAULT_DEVICE_OPTIONS = {
+};
+
+const mergeOptions = require('merge-options');
 var NetatmoDevice = require("../lib/netatmo-device");
 
 var homebridge;
@@ -15,6 +19,7 @@ module.exports = function(pHomebridge) {
     constructor(log, api, config) {
       super(log, api, config);
       this.deviceType = "camera";
+      this.options = mergeOptions(this.options, DEFAULT_DEVICE_OPTIONS, this.config[this.deviceType] || {});
     }
 
     loadDeviceData(callback) {

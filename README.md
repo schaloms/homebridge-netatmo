@@ -1,12 +1,14 @@
-[![Build Status](https://secure.travis-ci.org/planetk/homebridge-netatmo.png?branch=master)](http://travis-ci.org/planetk/homebridge-netatmo)
-[![downloads][downloads-image]][downloads-url]
-Like this? Please buy me a beer ...
+# homebridge-netatmo-schaloms
+
+This plugin is a (temporary) fork of [homebridge-netatmo](https://npmjs.org/package/homebridge-netatmo)
+introducing additional features.
+
+**PUBLISHED ONLY FOR TESTING PURPOSES - USAGE STRONGLY DISCOURAGED!** 
+
+Nevertheless, if you find it useful then go ahead and buy the original author a beer or two...
 [![Donate](https://img.shields.io/badge/Donate-PayPal-blue.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=7ZGEPWHG5UH6S)
 
-[downloads-image]: https://img.shields.io/npm/dm/homebridge-netatmo.svg?style=flat
-[downloads-url]: https://npmjs.org/package/homebridge-netatmo
-
-# homebridge-netatmo
+# homebridge-netatmo Original Documentation
 
 This is a plugin for homebridge. It's a working implementation for several netatmo devices:
 
@@ -306,18 +308,3 @@ Following things are to be developed next.
 * names in config
 * trigger switches (-> pushover, enigma, virtual switch for scenes -> push)
 
-----
-
-Is this plugin useful for you? Please buy me a beer ...
-[![Donate](https://img.shields.io/badge/Donate-PayPal-blue.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=7ZGEPWHG5UH6S)
-
-<small>
-Thank you for buying me a beer to follwing users:
-
-* 2016-07-18: Samuel J.
-* 2016-09-03: Alexis A. 
-* 2016-09-16: Sylvain D. 
-* 2016-11-01: Sebastian K.
-* 2016-11-04: Frank H.
-* 2017-02-25: Peter B.
-</small>

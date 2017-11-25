@@ -9,6 +9,11 @@ const MIN_BATTERY_LEVEL = 2800;
 const LOW_BATTERY_LEVEL = 3000;
 const FULL_BATTERY_LEVEL = 4100;
 
+const DEFAULT_ACCESSORY_OPTIONS = {
+};
+
+const mergeOptions = require('merge-options');
+
 var homebridge;
 var Characteristic;
 var NetatmoAccessory;
@@ -28,7 +33,8 @@ module.exports = function(pHomebridge) {
         "netatmoType": deviceData.type,
         "firmware": deviceData.firmware,
         "name": deviceData.station_name || "Netatmo " + netatmoDevice.deviceType + " " + deviceData._id,
-        "defaultServices": DEFAULT_SERVICES
+        "defaultServices": DEFAULT_SERVICES,
+        "options": mergeOptions(DEFAULT_ACCESSORY_OPTIONS, netatmoDevice.options)
 //        "dataTypes"
       };
 

@@ -14,6 +14,12 @@ const DEFAULT_SERVICES = [
 ////        "eveweather-elgato"
       ];
 
+const DEFAULT_ACCESSORY_OPTIONS = {
+  co2_warning_threshold: "1000"
+};
+
+const mergeOptions = require('merge-options');
+
 var homebridge;
 var Characteristic;
 var NetatmoAccessory;
@@ -39,7 +45,8 @@ module.exports = function(pHomebridge) {
         "firmware": deviceData.firmware,
         "name": deviceData._name || "Netatmo " + netatmoDevice.deviceType + " " + deviceData._id,
         "defaultServices": DEFAULT_SERVICES,
-        "dataTypes": dataTypes
+        "dataTypes": dataTypes,
+        "options": mergeOptions(DEFAULT_ACCESSORY_OPTIONS, netatmoDevice.options)
       };
 
       super(homebridge, accessoryConfig, netatmoDevice);

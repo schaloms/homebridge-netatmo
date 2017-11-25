@@ -28,3 +28,7 @@ build/Release
 node_modules
 /.idea
 config.json
+
+# Visual Studio Code
+.vscode
+package-lock.json

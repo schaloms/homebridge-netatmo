@@ -4,6 +4,11 @@ const DEFAULT_SERVICES = [
         "motionsensor-homekit"
       ];
 
+const DEFAULT_ACCESSORY_OPTIONS = {
+};
+
+const mergeOptions = require('merge-options');
+
 var homebridge;
 var Characteristic;
 var NetatmoAccessory;
@@ -24,7 +29,8 @@ module.exports = function(pHomebridge) {
         "netatmoType": deviceData.type || 'camera',
         "firmware": deviceData.firmware || 0.0,
         "name": deviceData.name || "Netatmo " + netatmoDevice.deviceType + " " + deviceData._id,
-        "defaultServices": DEFAULT_SERVICES
+        "defaultServices": DEFAULT_SERVICES,
+        "options": mergeOptions(DEFAULT_ACCESSORY_OPTIONS, netatmoDevice.options)
       };
 
       super(homebridge, accessoryConfig, netatmoDevice);
