@@ -13,8 +13,8 @@ module.exports = function(pHomebridge) {
   }
 
   class NoiseLevelCharacteristic extends Characteristic {
-    constructor(accessory) {
-      super('Noise Level', NOISE_LEVEL_CTYPE_ID);
+    constructor(i18n) {
+      super(i18n.__("weather_chr_noise"), NOISE_LEVEL_CTYPE_ID);
       this.setProps({
         format: Characteristic.Formats.UINT8,
         unit: "dB",
@@ -32,10 +32,11 @@ module.exports = function(pHomebridge) {
 
   class NoiseLevelService extends homebridge.hap.Service {
     constructor(accessory) {
-      super(accessory.name + " Noise Level", NOISE_LEVEL_STYPE_ID);
+      super(accessory.name + " " + accessory.i18n.__("weather_svc_noise"), NOISE_LEVEL_STYPE_ID);
       this.accessory = accessory;
+      this.i18n = accessory.i18n;
 
-      this.addCharacteristic(NoiseLevelCharacteristic)
+      this.addCharacteristic(NoiseLevelCharacteristic, this.i18n)
         .on('get', this.getNoiseLevel.bind(this))
         .eventEnabled = true;
 

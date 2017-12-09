@@ -22,8 +22,8 @@ module.exports = function(pHomebridge) {
   }
 
   class AtmosphericPressureCharacteristic extends Characteristic {
-    constructor(accessory) {
-      super('Atmospheric Pressure', ATMOSPHERIC_PRESSURE_CTYPE_ID);
+    constructor(i18n) {
+      super(i18n.__("weather_chr_airpressure"), ATMOSPHERIC_PRESSURE_CTYPE_ID);
       this.setProps({
         format: Characteristic.Formats.UINT8,
         unit: "hPA", 
@@ -41,10 +41,11 @@ module.exports = function(pHomebridge) {
 
   class AirPressureService extends homebridge.hap.Service {
     constructor(accessory) {
-      super(accessory.name + " Air Pressure", ATMOSPHERIC_PRESSURE_STYPE_ID);
+      super(accessory.name + " " + accessory.i18n.__("weather_svc_airpressure"), ATMOSPHERIC_PRESSURE_STYPE_ID);
       this.accessory = accessory;
+      this.i18n = accessory.i18n;
 
-      this.addCharacteristic(AtmosphericPressureCharacteristic)
+      this.addCharacteristic(AtmosphericPressureCharacteristic, this.i18n)
         .on('get', this.getAtmosphericPressure.bind(this))
         .eventEnabled = true;
 

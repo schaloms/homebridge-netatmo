@@ -15,7 +15,11 @@ const DEFAULT_SERVICES = [
       ];
 
 const DEFAULT_ACCESSORY_OPTIONS = {
-  co2_warning_threshold: "1000"
+  co2_warning_threshold: 1000,
+  air_quality_poor_threshold: 2000,
+  air_quality_inferior_threshold: 1500,
+  air_quality_fair_threshold: 1000,
+  air_quality_good_threshold: 500,
 };
 
 const mergeOptions = require('merge-options');

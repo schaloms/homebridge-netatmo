@@ -28,7 +28,7 @@ module.exports = function(pHomebridge) {
         // TODO: Check Modules in home!
         "netatmoType": deviceData.type || 'camera',
         "firmware": deviceData.firmware || 0.0,
-        "name": deviceData.name || "Netatmo " + netatmoDevice.deviceType + " " + deviceData._id,
+        "name": deviceData._name || "Netatmo " + netatmoDevice.deviceType + " " + deviceData._id,
         "defaultServices": DEFAULT_SERVICES,
         "options": mergeOptions(DEFAULT_ACCESSORY_OPTIONS, netatmoDevice.options)
       };

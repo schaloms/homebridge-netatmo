@@ -11,13 +11,21 @@ module.exports = function (pHomebridge) {
 };
 
 var netatmo = require("netatmo");
-var inherits = require('util').inherits;
+var inherits = require("util").inherits;
 
 class NetatmoPlatform {
   constructor(log, config) {
     this.log = log;
     this.config = config || {};
     this.foundAccessories = [];
+
+    this.i18n = new (require("i18n-2"))({
+      locales: ["en", "de", "de_short"],
+      directory: __dirname + "/i18n",
+      extension: ".json",
+      devMode: false // never write back localized strings 
+    });    
+    this.i18n.setLocale(this.config.locale || "en");
 
     // If this log message is not seen, most likely the config.js is not found.
     this.log.debug('Creating NetatmoPlatform');
@@ -64,7 +72,7 @@ class NetatmoPlatform {
       try {
         calls.push(function(callback) {
           var DeviceType = require('./device/' + deviceType + '-device.js')(homebridge);
-          var devType = new DeviceType(this.log, this.api, this.config);
+          var devType = new DeviceType(this.log, this.api, this.i18n, this.config);
           devType.buildAccessoriesForDevices(function(err, deviceAccessories) {
             callback(err, deviceAccessories);
           });

@@ -32,7 +32,7 @@ module.exports = function(pHomebridge) {
         "id": deviceData._id,
         "netatmoType": deviceData.type,
         "firmware": deviceData.firmware,
-        "name": deviceData.station_name || "Netatmo " + netatmoDevice.deviceType + " " + deviceData._id,
+        "name": deviceData._name || "Netatmo " + netatmoDevice.deviceType + " " + deviceData._id,
         "defaultServices": DEFAULT_SERVICES,
         "options": mergeOptions(DEFAULT_ACCESSORY_OPTIONS, netatmoDevice.options)
 //        "dataTypes"

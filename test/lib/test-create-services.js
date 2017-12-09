@@ -40,7 +40,7 @@ describe("Services", function() {
                 assert(acc.getService(Service.HumiditySensor), "Module " + acc.netatmoType + " should have HumiditySensor");
                 assert(acc.getService(Service.CarbonDioxideSensor), "Module " + acc.netatmoType + " should have CarbonDioxideSensor");
                 assert(acc.getService(Service.AirQualitySensor), "Module " + acc.netatmoType + " should have CarbonDioxideSensor");
-                assert(acc.getService( acc.name + " Air Pressure"), "Module " + acc.netatmoType + " should have Atmospheric Pressure service");
+                assert(acc.getService(acc.name + " Air Pressure"), "Module " + acc.netatmoType + " should have Atmospheric Pressure service");
                 assert(acc.getService(acc.name + " Noise Level"), "Module " + acc.netatmoType + " should have Noise Level service");
 
                 assert(null == acc.getService(Service.BatteryService), "Module " + acc.netatmoType + " should not have BatteryService");

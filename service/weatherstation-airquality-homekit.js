@@ -11,8 +11,9 @@ module.exports = function(pHomebridge) {
 
   class AirQualityService extends homebridge.hap.Service.AirQualitySensor {
     constructor(accessory) {
-      super(accessory.name + " Air Quality");
+      super(accessory.name + " " + accessory.i18n.__("weather_svc_airquality"));
       this.accessory = accessory;
+      this.i18n = accessory.i18n;
 
       this.getCharacteristic(Characteristic.AirQuality)
         .on('get', this.getAirQuality.bind(this))
@@ -35,10 +36,10 @@ module.exports = function(pHomebridge) {
       var level = this.accessory.co2;
       var quality = Characteristic.AirQuality.UNKNOWN;
 
-      if (level > 2000) quality = Characteristic.AirQuality.POOR;
-      else if (level > 1500) quality = Characteristic.AirQuality.INFERIOR;
-      else if (level > 1000) quality = Characteristic.AirQuality.FAIR;
-      else if (level > 500) quality = Characteristic.AirQuality.GOOD;
+      if (level >= this.accessory.options.air_quality_poor_threshold) quality = Characteristic.AirQuality.POOR;
+      else if (level >= this.accessory.options.air_quality_inferior_threshold) quality = Characteristic.AirQuality.INFERIOR;
+      else if (level >= this.accessory.options.air_quality_fair_threshold) quality = Characteristic.AirQuality.FAIR;
+      else if (level >= this.accessory.options.air_quality_good_threshold) quality = Characteristic.AirQuality.GOOD;
       else if (level > 0) quality = Characteristic.AirQuality.EXCELLENT;
   
       return quality;

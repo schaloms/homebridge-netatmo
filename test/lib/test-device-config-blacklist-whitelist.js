@@ -54,6 +54,13 @@ var api = {
   }
 };
 
+var i18n = new (require("i18n-2"))({
+  locales: ["en"],
+  directory: __dirname + "/i18n",
+  extension: ".json",
+  devMode: false
+});    
+
 describe("Blacklist / Whitelist", function() {
 
   describe("Weather Device", function() {
@@ -62,7 +69,7 @@ describe("Blacklist / Whitelist", function() {
 
     it('build accessories with empty config loads all', function (done) {
       var config = {};
-      var station = new WeatherDevice(logx, api, config);
+      var station = new WeatherDevice(logx, api, i18n, config);
 
       station.buildAccessoriesForDevices( function(err, deviceAccessories) {
         assert.equal(deviceAccessories.length, 10);
@@ -72,7 +79,7 @@ describe("Blacklist / Whitelist", function() {
 
     it('build accessories with blacklist device loads all but module', function (done) {
       var config = { blacklist: [ "d2:00:00:00:00:00" ] };
-      var station = new WeatherDevice(logx, api, config);
+      var station = new WeatherDevice(logx, api, i18n, config);
 
       station.buildAccessoriesForDevices( function(err, deviceAccessories) {
         assert.equal(deviceAccessories.length, 9);
@@ -82,7 +89,7 @@ describe("Blacklist / Whitelist", function() {
 
     it('build accessories with blacklist module loads all but module', function (done) {
       var config = { blacklist: [ "d2:m2:11:11:11:11" ] };
-      var station = new WeatherDevice(logx, api, config);
+      var station = new WeatherDevice(logx, api, i18n, config);
 
       station.buildAccessoriesForDevices( function(err, deviceAccessories) {
         assert.equal(deviceAccessories.length, 9);
@@ -98,7 +105,7 @@ describe("Blacklist / Whitelist", function() {
 
     it('build accessories with empty config loads all', function (done) {
       var config = {};
-      var camera = new CameraDevice(logx, api, config);
+      var camera = new CameraDevice(logx, api, i18n, config);
       camera.buildAccessoriesForDevices( function(err, deviceAccessories) {
         assert.equal(deviceAccessories.length, 6);
         done();
@@ -107,7 +114,7 @@ describe("Blacklist / Whitelist", function() {
 
     it('build accessories with empty whitelist loads all', function (done) {
       var config = { whitelist: [] };
-      var camera = new CameraDevice(logx, api, config);
+      var camera = new CameraDevice(logx, api, i18n, config);
       camera.buildAccessoriesForDevices( function(err, deviceAccessories) {
         assert.equal(deviceAccessories.length, 6);
         done();
@@ -116,7 +123,7 @@ describe("Blacklist / Whitelist", function() {
 
     it('build accessories with empty blacklist loads all', function (done) {
       var config = { blacklist: [] };
-      var camera = new CameraDevice(logx, api, config);
+      var camera = new CameraDevice(logx, api, i18n, config);
       camera.buildAccessoriesForDevices( function(err, deviceAccessories) {
         assert.equal(deviceAccessories.length, 6);
         done();
@@ -125,7 +132,7 @@ describe("Blacklist / Whitelist", function() {
 
     it('build accessories with blacklist entry loads 5', function (done) {
       var config = { blacklist: [ "33:33:33:33:33:33" ] };
-      var camera = new CameraDevice(logx, api, config);
+      var camera = new CameraDevice(logx, api, i18n, config);
       camera.buildAccessoriesForDevices( function(err, deviceAccessories) {
         assert.equal(deviceAccessories.length, 5);
         // TODO: Check 333 not there!
@@ -135,7 +142,7 @@ describe("Blacklist / Whitelist", function() {
 
     it('build accessories with whitelist entry loads 1', function (done) {
       var config = { whitelist: [ "55:00:00:00:00:55" ] };
-      var camera = new CameraDevice(logx, api, config);
+      var camera = new CameraDevice(logx, api, i18n, config);
       camera.buildAccessoriesForDevices( function(err, deviceAccessories) {
         assert.equal(deviceAccessories.length, 1);
         // TODO: Check 333 not there!

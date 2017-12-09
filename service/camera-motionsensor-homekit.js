@@ -11,8 +11,9 @@ module.exports = function(pHomebridge) {
 
   class MotionSensorService extends homebridge.hap.Service.MotionSensor {
     constructor(accessory) {
-      super(accessory.name + " Motion Sensor");
+      super(accessory.name + " " + accessory.i18n.__("camera_svc_motionsensor"));
       this.accessory = accessory;
+      this.i18n = accessory.i18n;
 
       this.getCharacteristic(Characteristic.MotionDetected)
         .on('get', this.getMotionDetected.bind(this))

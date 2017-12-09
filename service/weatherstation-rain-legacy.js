@@ -15,8 +15,8 @@ module.exports = function(pHomebridge) {
   }
 
   class RainLevelCharacteristic extends Characteristic {
-    constructor(accessory) {
-      super('Rain Level', RAIN_LEVEL_CTYPE_ID);
+    constructor(i18n) {
+      super(i18n.__("weather_chr_rain"), RAIN_LEVEL_CTYPE_ID);
       this.setProps({
         format: Characteristic.Formats.FLOAT,
         unit: "mm",
@@ -33,8 +33,8 @@ module.exports = function(pHomebridge) {
   }
 
   class RainLevelSum1Characteristic extends Characteristic {
-    constructor(accessory) {
-      super('Rain Level (1 hour)', RAIN_LEVEL_SUM_1H_CTYPE_ID);
+    constructor(i18n) {
+      super(i18n.__("weather_chr_rain_1h"), RAIN_LEVEL_SUM_1H_CTYPE_ID);
       this.setProps({
         format: Characteristic.Formats.FLOAT,
         unit: "mm",
@@ -51,8 +51,8 @@ module.exports = function(pHomebridge) {
   }
 
   class RainLevelSum24Characteristic extends Characteristic {
-    constructor(accessory) {
-      super('Rain Level (24 hours)', RAIN_LEVEL_SUM_24H_CTYPE_ID);
+    constructor(i18n) {
+      super(i18n.__("weather_chr_rain_24h"), RAIN_LEVEL_SUM_24H_CTYPE_ID);
       this.setProps({
         format: Characteristic.Formats.FLOAT,
         unit: "mm",
@@ -70,16 +70,17 @@ module.exports = function(pHomebridge) {
 
   class RainLevelService extends homebridge.hap.Service {
     constructor(accessory) {
-      super(accessory.name + " Rain Level", RAIN_LEVEL_STYPE_ID);
+      super(accessory.name + " " + accessory.i18n.__("weather_svc_rain"), RAIN_LEVEL_STYPE_ID);
       this.accessory = accessory;
+      this.i18n = accessory.i18n;
 
-      this.addCharacteristic(RainLevelCharacteristic)
+      this.addCharacteristic(RainLevelCharacteristic, this.i18n)
         .on('get', this.getRainLevel.bind(this))
         .eventEnabled = true;
-      this.addCharacteristic(RainLevelSum1Characteristic)
+      this.addCharacteristic(RainLevelSum1Characteristic, this.i18n)
         .on('get', this.getRainLevelSum1.bind(this))
         .eventEnabled = true;
-      this.addCharacteristic(RainLevelSum24Characteristic)
+      this.addCharacteristic(RainLevelSum24Characteristic, this.i18n)
         .on('get', this.getRainLevelSum24.bind(this))
         .eventEnabled = true;
 

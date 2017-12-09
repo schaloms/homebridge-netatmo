@@ -16,8 +16,8 @@ module.exports = function(pHomebridge) {
   }
 
   class WindStrengthCharacteristic extends Characteristic {
-    constructor(accessory) {
-      super('Wind Strength', WIND_STRENGTH_CTYPE_ID);
+    constructor(i18n) {
+      super(i18n.__("weather_chr_windstrength"), WIND_STRENGTH_CTYPE_ID);
       this.setProps({
         format: Characteristic.Formats.UINT8,
         unit: "km/h",
@@ -34,8 +34,8 @@ module.exports = function(pHomebridge) {
   } 
 
   class WindAngleCharacteristic extends Characteristic {
-    constructor(accessory) {
-      super('Wind Angle', WIND_ANGLE_CTYPE_ID);
+    constructor(i18n) {
+      super(i18n.__("weather_chr_windangle"), WIND_ANGLE_CTYPE_ID);
       this.setProps({
         format: Characteristic.Formats.UINT8,
         unit: "deg",
@@ -52,8 +52,8 @@ module.exports = function(pHomebridge) {
   } 
 
   class GustStrengthCharacteristic extends Characteristic {
-    constructor(accessory) {
-      super('Gust Strength', GUST_STRENGTH_CTYPE_ID);
+    constructor(i18n) {
+      super(i18n.__("weather_chr_guststrength"), GUST_STRENGTH_CTYPE_ID);
       this.setProps({
         format: Characteristic.Formats.UINT8,
         unit: "km/h",
@@ -70,8 +70,8 @@ module.exports = function(pHomebridge) {
   }
 
   class GustAngleCharacteristic extends Characteristic {
-    constructor(accessory) {
-      super('Gust Angle', GUST_ANGLE_CTYPE_ID);
+    constructor(i18n) {
+      super(i18n.__("weather_chr_gustangle"), GUST_ANGLE_CTYPE_ID);
       this.setProps({
         format: Characteristic.Formats.UINT8,
         unit: "deg",
@@ -89,19 +89,20 @@ module.exports = function(pHomebridge) {
 
   class WindService extends homebridge.hap.Service {
     constructor(accessory) {
-      super(accessory.name + " Wind Sensor", WIND_MEASURE_STYPE_ID);
+      super(accessory.name + " " + accessory.i18n.__("weather_svc_wind"), WIND_MEASURE_STYPE_ID);
       this.accessory = accessory;
+      this.i18n = accessory.i18n;
 
-      this.addCharacteristic(WindStrengthCharacteristic)
+      this.addCharacteristic(WindStrengthCharacteristic, this.i18n)
         .on('get', this.getWindStrength.bind(this))
         .eventEnabled = true;
-      this.addCharacteristic(WindAngleCharacteristic)
+      this.addCharacteristic(WindAngleCharacteristic, this.i18n)
         .on('get', this.getWindAngle.bind(this))
         .eventEnabled = true;
-      this.addCharacteristic(GustStrengthCharacteristic)
+      this.addCharacteristic(GustStrengthCharacteristic, this.i18n)
         .on('get', this.getGustStrength.bind(this))
         .eventEnabled = true;
-      this.addCharacteristic(GustAngleCharacteristic)
+      this.addCharacteristic(GustAngleCharacteristic, this.i18n)
         .on('get', this.getGustAngle.bind(this))
         .eventEnabled = true;
 

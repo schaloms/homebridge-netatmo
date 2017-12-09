@@ -11,7 +11,7 @@ module.exports = function(pHomebridge) {
 
   class HumidityService extends homebridge.hap.Service.HumiditySensor {
     constructor(accessory) {
-      super(accessory.name + " Humidity");
+      super(accessory.name + " " + accessory.i18n.__("weather_svc_humidity"));
       this.accessory = accessory;
 
       this.getCharacteristic(Characteristic.CurrentRelativeHumidity)

@@ -19,7 +19,8 @@
     "node-cache": "3.0.0",
     "async": "2.0.1",
     "glob": "7.0.5",
-    "merge-options": "1.0.0"
+    "merge-options": "1.0.0",
+    "i18n-2": "0.7.2"
   },
   "devDependencies": {
     "mocha": "",

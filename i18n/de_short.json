@@ -1,0 +1,23 @@
+{
+  "camera_svc_motionsensor": "Bewegung",
+  "thermostat_svc_battery": "Batterie",
+  "thermostat_svc_thermostat": "Thermostat",
+  "weather_svc_airpressure": "Luftdruck",
+  "weather_chr_airpressure": "Luftdruck",
+  "weather_svc_airquality": "Luftqualität",
+  "weather_svc_battery": "Batterie",
+  "weather_svc_co2": "CO2",
+  "weather_svc_humidity": "Luftfeuchte",
+  "weather_svc_noise": "Lärmpegel",
+  "weather_chr_noise": "Lärmpegel",
+  "weather_svc_rain": "Regen",
+  "weather_chr_rain": "Regen",
+  "weather_chr_rain_1h": "Regen/h",
+  "weather_chr_rain_24h": "Regen/24h",
+  "weather_svc_temperature": "Temperatur",
+  "weather_svc_wind": "Wind",
+  "weather_chr_windstrength": "Windstärke",
+  "weather_chr_windangle": "Richtung",
+  "weather_chr_guststrength": "Böen",
+  "weather_chr_gustangle": "Böenrichtung"
+}

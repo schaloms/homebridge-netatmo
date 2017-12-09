@@ -11,8 +11,9 @@ module.exports = function(pHomebridge) {
 
   class ThermostatService extends homebridge.hap.Service.Thermostat {
     constructor(accessory) {
-      super(accessory.name + " Thermostat");
+      super(accessory.name + " " + accessory.i18n.__("thermostat_svc_thermostat"));
       this.accessory = accessory;
+      this.i18n = accessory.i18n;
 
       this.temperatureDisplayUnits = Characteristic.TemperatureDisplayUnits.CELSIUS;
 

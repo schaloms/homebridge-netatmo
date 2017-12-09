@@ -1,0 +1,23 @@
+{
+  "camera_svc_motionsensor": "Motion Sensor",
+  "thermostat_svc_battery": "Thermostat",
+  "thermostat_svc_thermostat": "Thermostat",
+  "weather_svc_airpressure": "Air Pressure",
+  "weather_chr_airpressure": "Atmospheric Pressure",
+  "weather_svc_airquality": "Air Quality",
+  "weather_svc_battery": "Battery Level",
+  "weather_svc_co2": "Carbon Dioxide",
+  "weather_svc_humidity": "Humidity",
+  "weather_svc_noise": "Noise Level",
+  "weather_chr_noise": "Noise Level",
+  "weather_svc_rain": "Rain Level",
+  "weather_chr_rain": "Rain Level",
+  "weather_chr_rain_1h": "Rain Level (1 hour)",
+  "weather_chr_rain_24h": "Rain Level (24 hours)",
+  "weather_svc_temperature": "Temperature",
+  "weather_svc_wind": "Wind Sensor",
+  "weather_chr_windstrength": "Wind Strength",
+  "weather_chr_windangle": "Wind Angle",
+  "weather_chr_guststrength": "Gust Strength",
+  "weather_chr_gustangle": "Gust Angle"
+}

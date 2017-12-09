@@ -11,8 +11,9 @@ module.exports = function(pHomebridge) {
 
   class CarbonDioxideService extends homebridge.hap.Service.CarbonDioxideSensor {
     constructor(accessory) {
-      super(accessory.name + " Carbon Dioxide");
+      super(accessory.name + " " + accessory.i18n.__("weather_svc_co2"));
       this.accessory = accessory;
+      this.i18n = accessory.i18n;
 
       this.getCharacteristic(Characteristic.CarbonDioxideDetected)
         .on('get', this.getCarbonDioxideDetected.bind(this))
@@ -45,8 +46,8 @@ module.exports = function(pHomebridge) {
     }
 
     transformCO2ToCarbonDioxideDetected() {
-      return (this.accessory.co2 > this.accessory.options.co2_warning_threshold ? Characteristic.CarbonDioxideDetected.CO2_LEVELS_ABNORMAL 
-                                                                                : Characteristic.CarbonDioxideDetected.CO2_LEVELS_NORMAL);
+      return (this.accessory.co2 >= this.accessory.options.co2_warning_threshold ? Characteristic.CarbonDioxideDetected.CO2_LEVELS_ABNORMAL 
+                                                                                 : Characteristic.CarbonDioxideDetected.CO2_LEVELS_NORMAL);
     }
   }
 

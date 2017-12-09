@@ -11,8 +11,9 @@ module.exports = function(pHomebridge) {
 
   class TemperatureService extends homebridge.hap.Service.TemperatureSensor {
     constructor(accessory) {
-      super(accessory.name + " Temperature");
+      super(accessory.name + " " + accessory.i18n.__("weather_svc_temperature"));
       this.accessory = accessory;
+      this.i18n = accessory.i18n;
 
       var tmpChar = this.getCharacteristic(Characteristic.CurrentTemperature);
       tmpChar.setProps({ minValue: -100 });
