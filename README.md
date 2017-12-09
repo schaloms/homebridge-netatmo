@@ -3,10 +3,46 @@
 This plugin is a (temporary) fork of [homebridge-netatmo](https://npmjs.org/package/homebridge-netatmo)
 introducing additional features.
 
-**PUBLISHED ONLY FOR TESTING PURPOSES - USAGE STRONGLY DISCOURAGED!** 
+**PUBLISHED FOR TESTING PURPOSES - USAGE STRONGLY DISCOURAGED IF YOU'RE NOT A DEVELOPER!** 
 
 Nevertheless, if you find it useful then go ahead and buy the original author a beer or two...
 [![Donate](https://img.shields.io/badge/Donate-PayPal-blue.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=7ZGEPWHG5UH6S)
+
+Advanced configuration sample illustrating the new configuration options provided by this forked version:
+
+<pre>
+
+"platforms": [
+    {
+        "platform": "netatmo",
+        "name": "My Station",
+        <b>"locale": "de",</b>
+        "auth": {
+            ...
+        },
+        <b>"global_opts":
+        {
+            "naming_strategy": "module"
+        },        
+        "weather_opts":
+        {
+            "co2_warning_threshold": 1500,
+            "air_quality_poor_threshold": 2000,
+            "air_quality_inferior_threshold": 1600,
+            "air_quality_fair_threshold": 1100,
+            "air_quality_good_threshold": 500
+        },
+        "device_opts": 
+        {
+            "70:ee:50:02:e0:3c":
+            {
+                "co2_warning_threshold": 2000
+            }
+        }</b>
+    }
+]
+
+</pre>
 
 # homebridge-netatmo Original Documentation
 
